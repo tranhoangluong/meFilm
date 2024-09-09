@@ -9,11 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupFirstView()
     }
-
-
+    
+    func setupFirstView(){
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "loginVC")
+        vc.modalPresentationStyle = .overFullScreen
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
 }
-
