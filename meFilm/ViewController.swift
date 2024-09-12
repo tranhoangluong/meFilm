@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "loginVC")
         vc.modalPresentationStyle = .overFullScreen
-    
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.present(vc, animated: true, completion: nil)
         }

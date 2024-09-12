@@ -166,17 +166,19 @@ extension LoginVC: UITextFieldDelegate{
 extension LoginVC: LoginResultDelegate{
     func loginSuccess(title: String) {
         self.view.makeToast(title)
-        DispatchQueue.main.async{
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "mainTabBarVC")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
+                       
         }
     }
     
     func loginFail(title: String, message: String) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.view.makeToast(message, title: title)
+                       
         }
     }
 
