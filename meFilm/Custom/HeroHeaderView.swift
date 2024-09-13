@@ -13,7 +13,7 @@ class HeroHeaderView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "heroImage")
+        imageView.image = UIImage(named: "")
         return imageView
     }()
     
@@ -35,7 +35,6 @@ class HeroHeaderView: UIView {
     }
     
     private func applyConstraint(){
-        //CONSTRAINTS PLAYBUTTON
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.centerXAnchor.constraint(equalTo: heroImageView.centerXAnchor).isActive = true
         playButton.centerYAnchor.constraint(equalTo: heroImageView.centerYAnchor).isActive = true

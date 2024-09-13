@@ -9,7 +9,6 @@ import UIKit
 
 class DiscoverVC: UIViewController {
     
-    @IBOutlet weak var lblDiscover: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     

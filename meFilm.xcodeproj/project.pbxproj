@@ -40,7 +40,7 @@
 		E8A090092C8D81070074EB81 /* ReuseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */; };
 		E8A0900A2C8D81070074EB81 /* ReuseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */; };
 		E8BEEBD62C91692900229587 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BEEBD52C91692900229587 /* APIService.swift */; };
-		E8FE47E42C837B000046D275 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE47E32C837B000046D275 /* CustomTextField.swift */; };
+		E8FE47E42C837B000046D275 /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE47E32C837B000046D275 /* ExtensionTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +104,7 @@
 		E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReuseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8BEEBD52C91692900229587 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		E8FE47E32C837B000046D275 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E8FE47E32C837B000046D275 /* ExtensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,17 +167,8 @@
 				E8A090042C8D801F0074EB81 /* DiscoverVC.xib */,
 				E8A090002C8D6F950074EB81 /* UserVC.xib */,
 				E859A1422C8EC8180010F6EF /* DetailMovieVC.xib */,
-				E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E87C46722C7CC2230078FF76 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				E87C46732C7CC2450078FF76 /* AuthService.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		E8885DEE2C7C6BA20043EA79 = {
@@ -205,12 +196,14 @@
 		E8885DF92C7C6BA20043EA79 /* meFilm */ = {
 			isa = PBXGroup;
 			children = (
-				E87C46712C7CBE350078FF76 /* Views */,
+				E8BBF7982C8377C200CB4923 /* Custom */,
+				E8B536172C94125A002D95D9 /* Extension */,
 				E8885E2C2C7C71950043EA79 /* Services */,
 				E8885E2F2C7C71FF0043EA79 /* Common */,
 				E8885E302C7C72080043EA79 /* Controllers */,
 				E8885E2D2C7C71D80043EA79 /* ViewModels */,
 				E8885E2E2C7C71F80043EA79 /* Models */,
+				E87C46712C7CBE350078FF76 /* Views */,
 				E8885DFA2C7C6BA20043EA79 /* AppDelegate.swift */,
 				E8885DFC2C7C6BA20043EA79 /* SceneDelegate.swift */,
 				E8885DFE2C7C6BA20043EA79 /* ViewController.swift */,
@@ -241,8 +234,8 @@
 		E8885E2C2C7C71950043EA79 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E87C46722C7CC2230078FF76 /* Auth */,
-				E8BEEBD42C91690B00229587 /* API */,
+				E87C46732C7CC2450078FF76 /* AuthService.swift */,
+				E8BEEBD52C91692900229587 /* APIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -268,8 +261,8 @@
 		E8885E2F2C7C71FF0043EA79 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E8BBF7982C8377C200CB4923 /* Custom */,
 				E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */,
+				E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -288,21 +281,20 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		E8B536172C94125A002D95D9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E8FE47E32C837B000046D275 /* ExtensionTextField.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E8BBF7982C8377C200CB4923 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				E8FE47E32C837B000046D275 /* CustomTextField.swift */,
 				E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */,
 			);
 			path = Custom;
-			sourceTree = "<group>";
-		};
-		E8BEEBD42C91690B00229587 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				E8BEEBD52C91692900229587 /* APIService.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +550,7 @@
 				E8A090062C8D801F0074EB81 /* DiscoverVC.swift in Sources */,
 				E8885E322C7C72480043EA79 /* User.swift in Sources */,
 				E859229C2C8C11CA000A0085 /* HomeVC.swift in Sources */,
-				E8FE47E42C837B000046D275 /* CustomTextField.swift in Sources */,
+				E8FE47E42C837B000046D275 /* ExtensionTextField.swift in Sources */,
 				E87C46762C7CC31A0078FF76 /* LoginVC.swift in Sources */,
 				E8885DFF2C7C6BA20043EA79 /* ViewController.swift in Sources */,
 				E85922992C8C1111000A0085 /* MainTabBarVC.swift in Sources */,

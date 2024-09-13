@@ -24,8 +24,6 @@ extension UITextField{
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
     }
-    
-   
 }
 
 
