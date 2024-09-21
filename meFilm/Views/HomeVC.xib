@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="meFilm" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="KpS-7B-P9g" id="EUE-dy-UGz"/>
+                <outlet property="collectionView" destination="uGn-dX-1GS" id="7uO-7T-thV"/>
                 <outlet property="imgMovie" destination="feM-Jw-JG2" id="IGs-W0-CGm"/>
                 <outlet property="playButton" destination="pi3-2C-ddS" id="YLr-w7-deF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,15 +23,44 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream everywhere" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om4-tG-Cwi">
+                    <rect key="frame" x="16" y="59" width="361" height="29"/>
+                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="feM-Jw-JG2">
-                    <rect key="frame" x="25" y="129" width="343" height="200"/>
+                    <rect key="frame" x="25" y="98" width="343" height="200"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="tFU-3s-OTe"/>
+                        <constraint firstAttribute="height" constant="200" id="pE8-tx-dhx"/>
                     </constraints>
                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45d-vY-8bx">
+                    <rect key="frame" x="16" y="308" width="361" height="2"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="Llo-nz-8pT"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending " lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC9-R9-zM4">
+                    <rect key="frame" x="16" y="320" width="361" height="29"/>
+                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uGn-dX-1GS">
+                    <rect key="frame" x="0.0" y="359" width="393" height="459"/>
+                    <color key="backgroundColor" red="0.08235294118" green="0.078431372550000003" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uWK-Wv-js4">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi3-2C-ddS">
-                    <rect key="frame" x="50" y="235" width="240" height="60"/>
+                    <rect key="frame" x="40.000000000000014" y="223.66666666666666" width="216.33333333333337" height="58.999999999999972"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="gray" imagePadding="15">
                         <imageReference key="image" image="play.circle.fill" catalog="system" renderingMode="hierarchical">
@@ -62,50 +91,29 @@
                         </attributedString>
                     </buttonConfiguration>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream everywhere" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om4-tG-Cwi">
-                    <rect key="frame" x="16" y="75" width="361" height="29"/>
-                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45d-vY-8bx">
-                    <rect key="frame" x="16" y="345" width="361" height="2"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="C2b-CD-4NK"/>
-                    </constraints>
-                </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="KpS-7B-P9g">
-                    <rect key="frame" x="16" y="363" width="361" height="455"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KOq-VX-7OL">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="KpS-7B-P9g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="2Xl-wk-W7v"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="om4-tG-Cwi" secondAttribute="trailing" constant="16" id="3mQ-gV-naz"/>
-                <constraint firstItem="om4-tG-Cwi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="83h-W5-L9X"/>
-                <constraint firstItem="45d-vY-8bx" firstAttribute="top" secondItem="feM-Jw-JG2" secondAttribute="bottom" constant="16" id="9Kr-a7-21e"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KpS-7B-P9g" secondAttribute="trailing" constant="16" id="KVq-UZ-jfR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="feM-Jw-JG2" secondAttribute="trailing" constant="25" id="MXo-kU-BdE"/>
-                <constraint firstAttribute="trailing" secondItem="45d-vY-8bx" secondAttribute="trailing" constant="16" id="afl-af-BVt"/>
-                <constraint firstItem="45d-vY-8bx" firstAttribute="top" secondItem="pi3-2C-ddS" secondAttribute="bottom" constant="50" id="btg-Vf-Kni"/>
-                <constraint firstItem="45d-vY-8bx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="dLG-ud-K1f"/>
-                <constraint firstItem="pi3-2C-ddS" firstAttribute="width" secondItem="feM-Jw-JG2" secondAttribute="width" multiplier="0.7" id="dae-IV-tNP"/>
-                <constraint firstItem="pi3-2C-ddS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="dnc-rC-pFp"/>
-                <constraint firstItem="feM-Jw-JG2" firstAttribute="top" secondItem="om4-tG-Cwi" secondAttribute="bottom" constant="25" id="fVG-Pt-DSh"/>
-                <constraint firstItem="feM-Jw-JG2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="iim-pd-CD3"/>
-                <constraint firstItem="om4-tG-Cwi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="mHe-eq-qjY"/>
-                <constraint firstItem="pi3-2C-ddS" firstAttribute="height" secondItem="feM-Jw-JG2" secondAttribute="height" multiplier="0.3" id="rA9-59-tbO"/>
-                <constraint firstItem="KpS-7B-P9g" firstAttribute="top" secondItem="45d-vY-8bx" secondAttribute="bottom" constant="16" id="sU1-tk-OB4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KpS-7B-P9g" secondAttribute="bottom" id="yL3-mg-BFI"/>
+                <constraint firstItem="uGn-dX-1GS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Mp-lE-sVG"/>
+                <constraint firstItem="DC9-R9-zM4" firstAttribute="top" secondItem="45d-vY-8bx" secondAttribute="bottom" constant="10" id="968-xO-gmU"/>
+                <constraint firstItem="pi3-2C-ddS" firstAttribute="centerY" secondItem="feM-Jw-JG2" secondAttribute="centerY" constant="55" id="9Na-Ka-BcF"/>
+                <constraint firstItem="DC9-R9-zM4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="EdU-2C-qRD"/>
+                <constraint firstItem="pi3-2C-ddS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="FEN-ts-gbM"/>
+                <constraint firstItem="45d-vY-8bx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="U3m-CB-bKc"/>
+                <constraint firstItem="om4-tG-Cwi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UZT-3S-UZh"/>
+                <constraint firstItem="45d-vY-8bx" firstAttribute="top" secondItem="feM-Jw-JG2" secondAttribute="bottom" constant="10" id="V6f-oP-F5u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="om4-tG-Cwi" secondAttribute="trailing" constant="16" id="Vbm-gs-TLs"/>
+                <constraint firstItem="uGn-dX-1GS" firstAttribute="top" secondItem="DC9-R9-zM4" secondAttribute="bottom" constant="10" id="YHK-2Z-uK5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uGn-dX-1GS" secondAttribute="bottom" id="ddq-Sc-kM7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uGn-dX-1GS" secondAttribute="bottom" id="dsD-xo-Zxy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DC9-R9-zM4" secondAttribute="trailing" constant="16" id="hNX-o5-9cJ"/>
+                <constraint firstItem="uGn-dX-1GS" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hhJ-F6-3jG"/>
+                <constraint firstItem="feM-Jw-JG2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="nWA-W3-pwL"/>
+                <constraint firstItem="om4-tG-Cwi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ogE-K1-LNe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="feM-Jw-JG2" secondAttribute="trailing" constant="25" id="v9H-1N-Zi6"/>
+                <constraint firstAttribute="trailing" secondItem="45d-vY-8bx" secondAttribute="trailing" constant="16" id="vKl-1m-Hs5"/>
+                <constraint firstItem="feM-Jw-JG2" firstAttribute="top" secondItem="om4-tG-Cwi" secondAttribute="bottom" constant="10" id="y0b-zl-IhT"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
@@ -113,7 +121,7 @@
     <resources>
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

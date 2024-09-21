@@ -88,11 +88,11 @@ PODS:
   - ImageSlideshow/Core (1.9.2)
   - IQKeyboardManagerSwift (7.1.1)
   - leveldb-library (1.22.5)
-  - NVActivityIndicatorView (5.2.0):
-    - NVActivityIndicatorView/Base (= 5.2.0)
-  - NVActivityIndicatorView/Base (5.2.0)
   - PromisesObjC (2.4.0)
   - RecaptchaInterop (100.0.0)
+  - SDWebImage (5.19.7):
+    - SDWebImage/Core (= 5.19.7)
+  - SDWebImage/Core (5.19.7)
   - Toast-Swift (5.1.1)
 
 DEPENDENCIES:
@@ -104,7 +104,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - ImageSlideshow
   - IQKeyboardManagerSwift
-  - NVActivityIndicatorView
+  - SDWebImage
   - Toast-Swift
 
 SPEC REPOS:
@@ -129,9 +129,9 @@ SPEC REPOS:
     - ImageSlideshow
     - IQKeyboardManagerSwift
     - leveldb-library
-    - NVActivityIndicatorView
     - PromisesObjC
     - RecaptchaInterop
+    - SDWebImage
     - Toast-Swift
 
 SPEC CHECKSUMS:
@@ -155,11 +155,11 @@ SPEC CHECKSUMS:
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   IQKeyboardManagerSwift: d7f3d3a562c237a0e7335e657cd598c452f57f1b
   leveldb-library: e8eadf9008a61f9e1dde3978c086d2b6d9b9dc28
-  NVActivityIndicatorView: fe52a6a68664c2df8991d7d9e3d86d8d19453c53
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
 
-PODFILE CHECKSUM: bfec94a1822753bd743598c2013086dc1c0e847d
+PODFILE CHECKSUM: 064b74b849149349d1f4c0e79dd55593c0475ae5
 
 COCOAPODS: 1.15.2

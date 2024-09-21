@@ -10,6 +10,8 @@
 		690278C0463E35A536D93B87 /* Pods_meFilm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61E84787D4232101835A751 /* Pods_meFilm.framework */; };
 		90349731964E47FA57067D51 /* Pods_meFilmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BF2494A51934D136EA81B25 /* Pods_meFilmTests.framework */; };
 		D61B414AC65C80BA1CFC2B7F /* Pods_meFilm_meFilmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB3E99BAC7D84D66625E175 /* Pods_meFilm_meFilmUITests.framework */; };
+		E8028CB72C97232C00F38433 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8028CB52C97232C00F38433 /* HomeCollectionViewCell.swift */; };
+		E8028CB82C97232C00F38433 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8028CB62C97232C00F38433 /* HomeCollectionViewCell.xib */; };
 		E8349F952C88ABBF00AD2946 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349F942C88ABBF00AD2946 /* LoginVM.swift */; };
 		E8349F972C88B79C00AD2946 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349F962C88B79C00AD2946 /* RegisterVM.swift */; };
 		E85922992C8C1111000A0085 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85922982C8C1111000A0085 /* MainTabBarVC.swift */; };
@@ -17,6 +19,7 @@
 		E859229D2C8C11CA000A0085 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E859229B2C8C11CA000A0085 /* HomeVC.xib */; };
 		E859A1432C8EC8180010F6EF /* DetailMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A1412C8EC8180010F6EF /* DetailMovieVC.swift */; };
 		E859A1442C8EC8180010F6EF /* DetailMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E859A1422C8EC8180010F6EF /* DetailMovieVC.xib */; };
+		E863626E2C98B5FA002C0A38 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */; };
 		E8715CBF2C8F3FCA00567553 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */; };
 		E87C46742C7CC2450078FF76 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46732C7CC2450078FF76 /* AuthService.swift */; };
 		E87C46762C7CC31A0078FF76 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46752C7CC31A0078FF76 /* LoginVC.swift */; };
@@ -70,6 +73,8 @@
 		D9E1F4EEB953087D14A576B8 /* Pods-meFilm-meFilmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meFilm-meFilmUITests.release.xcconfig"; path = "Target Support Files/Pods-meFilm-meFilmUITests/Pods-meFilm-meFilmUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DE9458408B6277792ADAA1F7 /* Pods-meFilm-meFilmUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meFilm-meFilmUITests.debug.xcconfig"; path = "Target Support Files/Pods-meFilm-meFilmUITests/Pods-meFilm-meFilmUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E61E84787D4232101835A751 /* Pods_meFilm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_meFilm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8028CB52C97232C00F38433 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8028CB62C97232C00F38433 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8349F942C88ABBF00AD2946 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		E8349F962C88B79C00AD2946 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		E85922982C8C1111000A0085 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
@@ -77,6 +82,7 @@
 		E859229B2C8C11CA000A0085 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		E859A1412C8EC8180010F6EF /* DetailMovieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieVC.swift; sourceTree = "<group>"; };
 		E859A1422C8EC8180010F6EF /* DetailMovieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMovieVC.xib; sourceTree = "<group>"; };
+		E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderView.swift; sourceTree = "<group>"; };
 		E87C46732C7CC2450078FF76 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E87C46752C7CC31A0078FF76 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -263,6 +269,8 @@
 			children = (
 				E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */,
 				E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */,
+				E8028CB52C97232C00F38433 /* HomeCollectionViewCell.swift */,
+				E8028CB62C97232C00F38433 /* HomeCollectionViewCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -293,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */,
+				E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				E859229D2C8C11CA000A0085 /* HomeVC.xib in Resources */,
 				E8A090022C8D6F950074EB81 /* UserVC.xib in Resources */,
 				E8885E022C7C6BA20043EA79 /* Base in Resources */,
+				E8028CB82C97232C00F38433 /* HomeCollectionViewCell.xib in Resources */,
 				E8A090092C8D81070074EB81 /* ReuseCollectionViewCell.xib in Resources */,
 				E87C467C2C7CC6150078FF76 /* GoogleService-Info.plist in Resources */,
 				E859A1442C8EC8180010F6EF /* DetailMovieVC.xib in Resources */,
@@ -554,9 +564,11 @@
 				E87C46762C7CC31A0078FF76 /* LoginVC.swift in Sources */,
 				E8885DFF2C7C6BA20043EA79 /* ViewController.swift in Sources */,
 				E85922992C8C1111000A0085 /* MainTabBarVC.swift in Sources */,
+				E863626E2C98B5FA002C0A38 /* CustomSegmentedControl.swift in Sources */,
 				E87C46742C7CC2450078FF76 /* AuthService.swift in Sources */,
 				E859A1432C8EC8180010F6EF /* DetailMovieVC.swift in Sources */,
 				E8885DFB2C7C6BA20043EA79 /* AppDelegate.swift in Sources */,
+				E8028CB72C97232C00F38433 /* HomeCollectionViewCell.swift in Sources */,
 				E8885DFD2C7C6BA20043EA79 /* SceneDelegate.swift in Sources */,
 				E8A090012C8D6F950074EB81 /* UserVC.swift in Sources */,
 				E8349F972C88B79C00AD2946 /* RegisterVM.swift in Sources */,

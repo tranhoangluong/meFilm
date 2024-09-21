@@ -145,6 +145,7 @@ class LoginVC: UIViewController{
     //LOGIN FACEBOOK ACTION
     @objc func onTapFacebookLogin(){
         authService.logInFacebook(viewController: self)
+        
     }
 }
 
@@ -178,7 +179,6 @@ extension LoginVC: LoginResultDelegate{
     func loginFail(title: String, message: String) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.view.makeToast(message, title: title)
-                       
         }
     }
 
@@ -217,6 +217,12 @@ extension LoginVC: LoginButtonDelegate{
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: (any Error)?) {
         if AccessToken.current != nil {
             self.btnFacebook.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "mainTabBarVC")
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            }
         }
         else{
             self.btnFacebook.isHidden = false

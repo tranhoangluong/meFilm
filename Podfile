@@ -8,7 +8,6 @@ target 'meFilm' do
   # Pods for meFilm
 pod 'IQKeyboardManagerSwift'
 pod 'Toast-Swift'
-pod 'NVActivityIndicatorView'
 pod 'FirebaseAuth'
 pod 'FirebaseDatabase'
 pod 'GoogleSignIn'
@@ -16,6 +15,7 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
 pod 'ImageSlideshow'
+pod 'SDWebImage'
 
 
   target 'meFilmTests' do
