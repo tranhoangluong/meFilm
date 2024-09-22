@@ -79,4 +79,43 @@ class APICaller{
         task.resume()
     }
     
+    
+    func getTopRatedMovies(completion: @escaping (Result<[Movie], Error>) -> Void){
+        guard let url = URL(string: "\(Constants.base_URL)/3/movie/top_rated?api_key=\(Constants.API_KEY)") else {return}
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do {
+                let results = try JSONDecoder().decode(TopRatedMoviesResponse.self, from: data)
+                completion(.success(results.results))
+            }
+            catch{
+                completion(.failure(APIError.failedGetData))
+            }
+        }
+        task.resume()
+    }
+    
+    func getUpComingMovies(completion: @escaping (Result<[Movie], Error>) -> Void){
+        guard let url = URL(string: "\(Constants.base_URL)/3/movie/upcoming?api_key=\(Constants.API_KEY)") else {return}
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do {
+                let results = try JSONDecoder().decode(UpComingMoviesResponse.self, from: data)
+                completion(.success(results.results))
+            }
+            catch{
+                completion(.failure(APIError.failedGetData))
+            }
+        }
+        task.resume()
+    }
+    
 }

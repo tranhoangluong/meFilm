@@ -7,10 +7,8 @@
 
 import UIKit
 
-
-enum MovieType: Int {
-    case movies = 0
-    case tvSeries = 1
+enum MovieType{
+    case movies, tvSeries, topRated, upComing
 }
 
 class DiscoverVC: UIViewController{
@@ -20,6 +18,9 @@ class DiscoverVC: UIViewController{
     
     var popularMovies  = [Movie]()
     var popularTvSeries = [Movie]()
+    var topRated = [Movie]()
+    var upComing = [Movie]()
+
     var currentMovieType: MovieType = .movies
     
     var delegate: CustomSegmentedControlDelegate?
@@ -28,20 +29,21 @@ class DiscoverVC: UIViewController{
         setupSearchBar()
         setupSegmentedControl()
         setupCollectionView()
+        change(to: 0)
     }
    
     func setupSegmentedControl(){
         let segmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentControlView.frame.width, height: segmentControlView.frame.height), buttonTitle: ["Movies", "Tv Series", "Top rated", "Upcoming"])
-        segmentControlView.backgroundColor = .clear
-        segmentControlView.addSubview(segmented)
+        segmented.backgroundColor = UIColor(red: 21.0/255.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
         segmented.delegate = self
+        segmentControlView.addSubview(segmented)
     }
     
     func setupSearchBar(){
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.font = UIFont(name: "Gill Sans", size: 18)
             textField.textColor = UIColor.white
-            textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "Doreamon", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+            textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
             if let leftView = textField.leftView as? UIImageView {
                 leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
                 leftView.tintColor = UIColor.white
@@ -57,63 +59,97 @@ class DiscoverVC: UIViewController{
         collectionView.register(reuseCollectionViewCell, forCellWithReuseIdentifier: "reuseCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-
     }
+    
+   
 }
 
-extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CustomSegmentedControlDelegate{
+extension DiscoverVC: CustomSegmentedControlDelegate{
     func change(to index: Int) {
         switch index {
         case 0: currentMovieType = .movies
+            APICaller.shared.getPopularMovies{ [weak self] result in
+                                 switch result {
+                                 case .success(let movies):
+                                     self?.popularMovies = movies
+                                     DispatchQueue.main.async {
+                                         self?.collectionView.reloadData()
+                                     }
+                                 case .failure(let error):
+                                     print(error.localizedDescription)
+                                 }
+                             }
         case 1: currentMovieType = .tvSeries
+            APICaller.shared.getPopularTVSeries{ [weak self] result in
+                                 switch result {
+                                 case .success(let movies):
+                                     self?.popularTvSeries = movies
+                                     DispatchQueue.main.async {
+                                         self?.collectionView.reloadData()
+                                     }
+                                 case .failure(let error):
+                                     print(error.localizedDescription)
+                                 }
+                             }
+        case 2: currentMovieType = .topRated
+            APICaller.shared.getTopRatedMovies{ [weak self] result in
+                                 switch result {
+                                 case .success(let movies):
+                                     self?.topRated = movies
+                                     DispatchQueue.main.async {
+                                         self?.collectionView.reloadData()
+                                     }
+                                 case .failure(let error):
+                                     print(error.localizedDescription)
+                                 }
+                             }
+        case 3: currentMovieType = .upComing
+            APICaller.shared.getUpComingMovies{ [weak self] result in
+                                 switch result {
+                                 case .success(let movies):
+                                     self?.upComing = movies
+                                     DispatchQueue.main.async {
+                                         self?.collectionView.reloadData()
+                                     }
+                                 case .failure(let error):
+                                     print(error.localizedDescription)
+                                 }
+                             }
         default: break
         }
     }
+}
 
+extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch currentMovieType {
-            case .movies:
+        case .movies:
                 return popularMovies.count
-            case .tvSeries:
+        case .tvSeries:
                 return popularTvSeries.count
-            }
+        case .topRated:
+            return topRated.count
+        case .upComing:
+            return upComing.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
         
-        switch indexPath.section {
-        case MovieType.movies.rawValue :
-            APICaller.shared.getPopularMovies{ [weak self] result in
-                       switch result {
-                       case .success(let movies):
-                           self?.popularMovies = movies
-                           DispatchQueue.main.async {
-                               self?.collectionView.reloadData()
-                           }
-                           if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(self?.popularMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-                           cell.lblMovie.text = self?.popularMovies[indexPath.row].original_title
-                       case .failure(let error):
-                           print(error.localizedDescription)
-                       }
-                   }
-        case MovieType.tvSeries.rawValue:
-            APICaller.shared.getPopularTVSeries{ [weak self] result in
-                       switch result {
-                       case .success(let movies):
-                           self?.popularTvSeries = movies
-                           DispatchQueue.main.async {
-                               self?.collectionView.reloadData()
-                           }
-                          
-                           if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(self?.popularTvSeries[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-                           cell.lblMovie.text = self?.popularTvSeries[indexPath.row].original_title
-                       case .failure(let error):
-                           print(error.localizedDescription)
-                       }
-                   }
-        default:
-           return UICollectionViewCell()
+        switch currentMovieType {
+        case .movies :
+            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(popularMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+            cell.lblMovie.text = popularMovies[indexPath.row].original_title
+        case .tvSeries:
+            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(popularTvSeries[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+            cell.lblMovie.text = popularTvSeries[indexPath.row].original_name
+        case .topRated:
+            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(topRated[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+            cell.lblMovie.text = topRated[indexPath.row].original_title ?? topRated[indexPath.row].original_name
+        case .upComing:
+            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(upComing[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+            cell.lblMovie.text = upComing[indexPath.row].original_title ?? upComing[indexPath.row].original_name
         }
         return cell
     }

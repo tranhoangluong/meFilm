@@ -18,6 +18,15 @@ struct PopularTVSeriesResponse: Codable{
 }
 
 
+struct TopRatedMoviesResponse: Codable{
+    let results: [Movie]
+}
+
+struct UpComingMoviesResponse: Codable{
+    let results: [Movie]
+}
+
+
 struct Movie: Codable{
     let id: Int
     let media_type: String?
