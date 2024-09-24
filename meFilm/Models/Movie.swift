@@ -26,6 +26,10 @@ struct UpComingMoviesResponse: Codable{
     let results: [Movie]
 }
 
+struct SearchMoviesResponse: Codable{
+    let results: [Movie]
+}
+
 
 struct Movie: Codable{
     let id: Int

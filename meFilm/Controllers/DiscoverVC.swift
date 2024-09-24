@@ -11,47 +11,56 @@ enum MovieType{
     case movies, tvSeries, topRated, upComing
 }
 
-class DiscoverVC: UIViewController{
-    @IBOutlet weak var searchBar: UISearchBar!
+class DiscoverVC: UIViewController, UISearchBarDelegate{
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControlView: UIView!
     
+    private let searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: ResultsSearchVC())
+        controller.searchBar.searchBarStyle = .minimal
+        controller.searchBar.searchTextField.placeholder(text: "Search for a Movie or a TV Show")
+        return controller
+       }()
+        
     var popularMovies  = [Movie]()
     var popularTvSeries = [Movie]()
     var topRated = [Movie]()
     var upComing = [Movie]()
+    var resultSearch = [Movie]()
 
     var currentMovieType: MovieType = .movies
     
     var delegate: CustomSegmentedControlDelegate?
     
     override func viewDidLoad() {
-        setupSearchBar()
+        setupNavigationController()
         setupSegmentedControl()
         setupCollectionView()
         change(to: 0)
     }
    
+    func setupNavigationController(){
+        navigationItem.title = "Find Movies, Tv Series, and more.."
+        navigationController?.navigationBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+        tabBarController?.tabBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+               navigationController?.navigationBar.prefersLargeTitles = true
+               navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 25) ?? UIFont.systemFont(ofSize: 25)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 25) ?? UIFont.systemFont(ofSize: 25)]
+        navigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = .white
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.searchTextField.font = UIFont(name: "Gill Sans", size: 18)
+    }
+    
     func setupSegmentedControl(){
         let segmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentControlView.frame.width, height: segmentControlView.frame.height), buttonTitle: ["Movies", "Tv Series", "Top rated", "Upcoming"])
         segmented.backgroundColor = UIColor(red: 21.0/255.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
         segmented.delegate = self
         segmentControlView.addSubview(segmented)
-    }
-    
-    func setupSearchBar(){
-        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
-            textField.font = UIFont(name: "Gill Sans", size: 18)
-            textField.textColor = UIColor.white
-            textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
-            if let leftView = textField.leftView as? UIImageView {
-                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-                leftView.tintColor = UIColor.white
-            }
-            let crossIconView = textField.value(forKey: "clearButton") as? UIButton
-             crossIconView?.setImage(crossIconView?.currentImage?.withRenderingMode(.alwaysTemplate), for: .normal)
-             crossIconView?.tintColor = .white
-        }
     }
     
     func setupCollectionView(){
@@ -120,6 +129,7 @@ extension DiscoverVC: CustomSegmentedControlDelegate{
     }
 }
 
+
 extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch currentMovieType {
@@ -166,3 +176,28 @@ extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 }
 
+extension DiscoverVC: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+                
+                guard let query = searchBar.text,
+                      !query.trimmingCharacters(in: .whitespaces).isEmpty,
+                      query.trimmingCharacters(in: .whitespaces).count >= 3,
+                      let resultsController = searchController.searchResultsController as? ResultsSearchVC else {
+                          return
+                      }
+//                resultsController.delegate = self
+                
+                APICaller.shared.search(with: query) { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(let movies):
+                            resultsController.movies = movies
+                            resultsController.collectionView.reloadData()
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+    }
+}

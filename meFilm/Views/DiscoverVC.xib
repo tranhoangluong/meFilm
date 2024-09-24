@@ -11,7 +11,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverVC" customModule="meFilm" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="ekP-6y-G1k" id="taT-wz-yMh"/>
-                <outlet property="searchBar" destination="Ekt-zT-xN6" id="fNn-nG-y9w"/>
                 <outlet property="segmentControlView" destination="Sty-Qp-HVw" id="Zn2-lg-Zra"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,27 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjw-AP-d5w">
-                    <rect key="frame" x="16" y="59" width="361" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="yBw-t7-Qca"/>
-                    </constraints>
-                    <string key="text">Find movies, TV series, 
-and more..</string>
-                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="25"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ekt-zT-xN6">
-                    <rect key="frame" x="16" y="175" width="361" height="56"/>
-                    <color key="barTintColor" red="0.12780275939999999" green="0.1227343157" blue="0.18933328990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="F1s-WM-nE2"/>
-                    </connections>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-6y-G1k">
-                    <rect key="frame" x="0.0" y="301" width="393" height="517"/>
+                    <rect key="frame" x="0.0" y="109" width="393" height="709"/>
                     <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnA-VJ-hFJ">
                         <size key="itemSize" width="128" height="128"/>
@@ -51,29 +31,24 @@ and more..</string>
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-Qp-HVw">
-                    <rect key="frame" x="0.0" y="241" width="393" height="50"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                     <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="rFS-kE-Ald"/>
+                        <constraint firstAttribute="height" constant="50" id="SCk-2v-UeI"/>
+                        <constraint firstAttribute="width" constant="393" id="rKw-OM-Jc7"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Sty-Qp-HVw" firstAttribute="top" secondItem="Ekt-zT-xN6" secondAttribute="bottom" constant="10" id="2GZ-g4-Vye"/>
-                <constraint firstItem="Sty-Qp-HVw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3ro-pK-aCQ"/>
-                <constraint firstItem="Ekt-zT-xN6" firstAttribute="leading" secondItem="rjw-AP-d5w" secondAttribute="leading" id="444-xd-r1Y"/>
-                <constraint firstItem="Sty-Qp-HVw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7Ih-EZ-RAN"/>
-                <constraint firstItem="Ekt-zT-xN6" firstAttribute="top" secondItem="rjw-AP-d5w" secondAttribute="bottom" constant="16" id="7b1-JD-vUe"/>
-                <constraint firstItem="Ekt-zT-xN6" firstAttribute="trailing" secondItem="rjw-AP-d5w" secondAttribute="trailing" id="FGq-6W-Gg3"/>
-                <constraint firstItem="rjw-AP-d5w" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LM6-au-DVz"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LYL-Js-i0F"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="top" secondItem="Sty-Qp-HVw" secondAttribute="bottom" constant="10" id="Oeb-Gc-oo6"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cuL-qa-Ttu"/>
-                <constraint firstItem="rjw-AP-d5w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fwL-Ex-bfR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rjw-AP-d5w" secondAttribute="trailing" constant="16" id="q1X-Xk-uzR"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="qca-1c-38N"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8jI-FB-isM"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BoB-TR-hwV"/>
+                <constraint firstItem="Sty-Qp-HVw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Pgr-uY-qhp"/>
+                <constraint firstItem="Sty-Qp-HVw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="frf-6I-Uis"/>
+                <constraint firstItem="Sty-Qp-HVw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="j4b-sN-3Uc"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xuN-2I-vB5"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="top" secondItem="Sty-Qp-HVw" secondAttribute="bottom" id="y3p-gH-xYj"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
