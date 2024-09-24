@@ -83,6 +83,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                })
 
         let vc = DetailMovieVC(nibName: "DetailMovieVC", bundle: nil)
+        let passData = trendingAll[indexPath.row]
+        vc.movieId = passData.id
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }

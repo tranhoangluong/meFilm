@@ -140,4 +140,23 @@ class APICaller{
         }
         task.resume()
     }
+    
+    func getSimilarMovies(movieId: Int, completion: @escaping (Result<[Movie], Error>) -> Void){
+        guard let url = URL(string: "\(Constants.base_URL)/3/movie/\(movieId)/similar?api_key=\(Constants.API_KEY)") else {return}
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do {
+                let results = try JSONDecoder().decode(SimilarMoviesResponse.self, from: data)
+                completion(.success(results.results))
+            }
+            catch{
+                completion(.failure(APIError.failedGetData))
+            }
+        }
+        task.resume()
+    }
 }

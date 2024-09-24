@@ -26,10 +26,15 @@ class DetailMovieVC: UIViewController {
     
     @IBOutlet weak var movieSynopsis: UITextView!
     
+    var similarMovies = [Movie]()
+    
+    var movieId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         setupCollectionView()
+        fetchData()
     }
     
     func configView(){
@@ -60,21 +65,37 @@ class DetailMovieVC: UIViewController {
         collectionView.dataSource = self
     }
     
+    func fetchData(){
+        APICaller.shared.getSimilarMovies(movieId: movieId!){ [weak self] result in
+                             switch result {
+                             case .success(let movies):
+                                 self?.similarMovies = movies
+                                 DispatchQueue.main.async {
+                                     self?.collectionView.reloadData()
+                                 }
+                             case .failure(let error):
+                                 print(error.localizedDescription)
+                             }
+                         }
+    }
+    
 }
 
 extension DetailMovieVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return similarMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
-        cell.backgroundColor = .red
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(similarMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+        cell.lblMovie.text = similarMovies[indexPath.row].original_title ?? similarMovies[indexPath.row].original_name
+        cell.imgMovie.contentMode = .scaleAspectFill
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width  = (view.frame.width - 30) / 2
-        return CGSize(width: width, height: bodyView.frame.height)
+        return CGSize(width: width, height: width)
     }
 }
