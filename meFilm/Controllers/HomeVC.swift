@@ -17,9 +17,20 @@ class HomeVC: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationController()
         configView()
         setupCollectionView()
-        fetchData()
+        fetchTrendingAll()
+    }
+    
+    func setupNavigationController(){
+        navigationItem.title = "Stream Everywhere"
+        navigationController?.navigationBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+        tabBarController?.tabBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
+               navigationController?.navigationBar.prefersLargeTitles = true
+               navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 25) ?? UIFont.systemFont(ofSize: 25)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Gill Sans", size: 25) ?? UIFont.systemFont(ofSize: 25)]
     }
     
     func configView(){
@@ -36,7 +47,7 @@ class HomeVC: UIViewController {
         collectionView.dataSource = self
     }
     
-    func fetchData(){
+    func fetchTrendingAll(){
         APICaller.shared.getTrendingAll { [weak self] result in
                    switch result {
                    case .success(let movies):
@@ -58,13 +69,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
-        
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 16
         
         let data = trendingAll[indexPath.row]
         
-        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(data.poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(trendingAll[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
         cell.nameMovie.text = data.original_title ?? data.original_name
         cell.rateAverageMovie.text = "\(data.vote_average)"
       
@@ -76,25 +86,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCell = collectionView.cellForItem(at: indexPath)  as? HomeCollectionViewCell
-        collectionView.bringSubviewToFront(selectedCell!)
-           UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
-               selectedCell?.transform = CGAffineTransform(scaleX: 1.5, y: 2)
-               })
-
         let vc = DetailMovieVC(nibName: "DetailMovieVC", bundle: nil)
         let passData = trendingAll[indexPath.row]
         vc.movieId = passData.id
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let unselectedCell = collectionView.cellForItem(at: indexPath)  as? HomeCollectionViewCell
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: [], animations: {
-            unselectedCell?.transform = .identity
-        })
-    }
-    
 }
 

@@ -46,5 +46,20 @@ struct Movie: Codable{
     let vote_average: Double
 }
 
+struct MovieDetail: Codable{
+    let id: Int
+    let original_name: String?
+    let original_title: String?
+    let poster_path: String?
+    let overview: String?
+    let release_date: String?
+    let vote_average: Double
+    let runtime: Int
+    let genres: [Genres]
+    let status: String
+}
 
-
+struct Genres: Codable{
+    let id: Int
+    let name: String?
+}

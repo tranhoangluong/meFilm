@@ -7,10 +7,12 @@
 import Foundation
 
 struct Constants{
-    
     static let API_KEY = "45962c4e7ae642360f74813a91c83582"
     static let base_URL = "https://api.themoviedb.org"
     static let imageBase_URL = "https://image.tmdb.org/t/p/w500/"
+    
+    static let YOUTUBE_API_KEY = "AIzaSyB3Cvph9oNXqU7mluOTCTbxvZuiqwrcY5A"
+    static let youtubeBase_URL = "https://youtube.googleapis.com/youtube/v3/search?"
 }
 
 enum APIError: Error{
@@ -159,4 +161,47 @@ class APICaller{
         }
         task.resume()
     }
+    
+    func getDetailMovie(movieId: Int, completion: @escaping (Result<MovieDetail, Error>) -> Void){
+        guard let url = URL(string: "\(Constants.base_URL)/3/movie/\(movieId)?api_key=\(Constants.API_KEY)") else {return}
+        
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            do {
+                let results = try JSONDecoder().decode(MovieDetail.self, from: data)
+                completion(.success(results))
+            }
+            catch{
+                completion(.failure(APIError.failedGetData))
+            }
+        }
+        task.resume()
+    }
+    
+    func getTrailer(with query: String, completion: @escaping (Result<Video, Error>) -> Void) {
+           guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+           guard let url = URL(string: "\(Constants.youtubeBase_URL)q=\(query)&key=\(Constants.YOUTUBE_API_KEY)") else {return}
+           let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+               guard let data = data, error == nil else {
+                   return
+               }
+               
+               do {
+                   let results = try JSONDecoder().decode(YoutubeSearchResult.self, from: data)
+                   
+                   completion(.success(results.items[0]))
+                   
+
+               } catch {
+                   completion(.failure(error))
+                   print(error.localizedDescription)
+               }
+
+           }
+           task.resume()
+       }
+    
 }

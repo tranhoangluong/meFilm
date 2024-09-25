@@ -6,58 +6,58 @@
 //
 
 import UIKit
+import WebKit
 
 class DetailMovieVC: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var bodyView: UIView!
- 
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var wkWebview: WKWebView!
     
-    @IBOutlet weak var nameMovie: UILabel!
+    @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieResolution: UILabel!
-   
     @IBOutlet weak var movieDuration: UILabel!
     @IBOutlet weak var movieRate: UILabel!
-    
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var movieGenre1: UILabel!
     @IBOutlet weak var movieGenre2: UILabel!
+    @IBOutlet weak var movieOverview: UITextView!
     
-    @IBOutlet weak var movieSynopsis: UITextView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var similarMovies = [Movie]()
-    
     var movieId: Int?
+    var movie: MovieDetail?
+    
+    var trailer: Video?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
         setupCollectionView()
-        fetchData()
+        fetchSimilarMovie()
+        fetchDetailMovie()
+        
     }
     
     func configView(){
-        let heroHeaderView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: headerView.frame.width, height: headerView.frame.height))
-        headerView.addSubview(heroHeaderView)
-        
         movieResolution.layer.masksToBounds = true
-        movieResolution.layer.cornerRadius = 16
+        movieResolution.layer.cornerRadius = 8
         movieResolution.layer.borderWidth = 1
         movieResolution.layer.borderColor = UIColor.white.cgColor
         
         movieGenre1.layer.masksToBounds = true
-        movieGenre1.layer.cornerRadius = 16
+        movieGenre1.layer.cornerRadius = 8
         movieGenre1.layer.borderWidth = 1
         movieGenre1.layer.borderColor = UIColor.white.cgColor
         
         movieGenre2.layer.masksToBounds = true
-        movieGenre2.layer.cornerRadius = 16
+        movieGenre2.layer.cornerRadius = 8
         movieGenre2.layer.borderWidth = 1
         movieGenre2.layer.borderColor = UIColor.white.cgColor
         
     }
-  
+    
     func setupCollectionView(){
         let reuseCollectionViewCell =  UINib(nibName: "ReuseCollectionViewCell", bundle: nil)
         collectionView.register(reuseCollectionViewCell, forCellWithReuseIdentifier: "reuseCollectionViewCell")
@@ -65,20 +65,58 @@ class DetailMovieVC: UIViewController {
         collectionView.dataSource = self
     }
     
-    func fetchData(){
+    func fetchSimilarMovie(){
         APICaller.shared.getSimilarMovies(movieId: movieId!){ [weak self] result in
-                             switch result {
-                             case .success(let movies):
-                                 self?.similarMovies = movies
-                                 DispatchQueue.main.async {
-                                     self?.collectionView.reloadData()
-                                 }
-                             case .failure(let error):
-                                 print(error.localizedDescription)
-                             }
-                         }
+            switch result {
+            case .success(let movies):
+                self?.similarMovies = movies
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
+    func fetchDetailMovie(){
+        APICaller.shared.getDetailMovie(movieId: movieId!){ [weak self] result in
+            switch result {
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.movieTitle.text = movie.original_title
+                    self?.movieResolution.text = movie.status
+                    self?.movieRate.text = "\(movie.vote_average) IMDb"
+                    self?.movieGenre1.text = "\(movie.genres)"
+                    self?.movieGenre2.text = "\(movie.genres.index(after: 1))"
+                    self?.movieOverview.text = movie.overview
+                    self?.movieReleaseDate.text = movie.release_date
+                    self?.movieDuration.text = "\(movie.runtime) minutes"
+                    self?.movieGenre1.text = movie.genres[0].name
+                    self?.movieGenre2.text = movie.genres[1].name
+                    
+                    APICaller.shared.getTrailer(with: movie.original_title!) { [weak self] result in
+                    switch result {
+                    case .success(let video):
+                        DispatchQueue.main.async {
+                            guard let url = URL(string: "https://www.youtube.com/embed/\( video.id.videoId)") else {
+                                        return
+                                    }
+                                    
+                            self?.wkWebview.load(URLRequest(url: url))
+                        }
+
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+                    
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension DetailMovieVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

@@ -12,7 +12,6 @@ enum MovieType{
 }
 
 class DiscoverVC: UIViewController, UISearchBarDelegate{
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControlView: UIView!
     
@@ -27,6 +26,7 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
     var popularTvSeries = [Movie]()
     var topRated = [Movie]()
     var upComing = [Movie]()
+    
     var resultSearch = [Movie]()
 
     var currentMovieType: MovieType = .movies
@@ -69,8 +69,6 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
-   
 }
 
 extension DiscoverVC: CustomSegmentedControlDelegate{
@@ -146,7 +144,6 @@ extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
-        
         switch currentMovieType {
         case .movies :
             if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(popularMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
@@ -186,8 +183,6 @@ extension DiscoverVC: UISearchResultsUpdating{
                       let resultsController = searchController.searchResultsController as? ResultsSearchVC else {
                           return
                       }
-//                resultsController.delegate = self
-                
                 APICaller.shared.search(with: query) { result in
                     DispatchQueue.main.async {
                         switch result {

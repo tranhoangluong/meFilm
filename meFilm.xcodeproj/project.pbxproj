@@ -16,13 +16,13 @@
 		E8045EFF2CA15B1100BEE21C /* ResultsSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8045EFD2CA15B1100BEE21C /* ResultsSearchVC.xib */; };
 		E8349F952C88ABBF00AD2946 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349F942C88ABBF00AD2946 /* LoginVM.swift */; };
 		E8349F972C88B79C00AD2946 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8349F962C88B79C00AD2946 /* RegisterVM.swift */; };
+		E83E74BE2CA486B80094C67A /* YoutubeSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83E74BD2CA486B80094C67A /* YoutubeSearchResult.swift */; };
 		E85922992C8C1111000A0085 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85922982C8C1111000A0085 /* MainTabBarVC.swift */; };
 		E859229C2C8C11CA000A0085 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859229A2C8C11CA000A0085 /* HomeVC.swift */; };
 		E859229D2C8C11CA000A0085 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E859229B2C8C11CA000A0085 /* HomeVC.xib */; };
 		E859A1432C8EC8180010F6EF /* DetailMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A1412C8EC8180010F6EF /* DetailMovieVC.swift */; };
 		E859A1442C8EC8180010F6EF /* DetailMovieVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E859A1422C8EC8180010F6EF /* DetailMovieVC.xib */; };
 		E863626E2C98B5FA002C0A38 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */; };
-		E8715CBF2C8F3FCA00567553 /* HeroHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */; };
 		E87C46742C7CC2450078FF76 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46732C7CC2450078FF76 /* AuthService.swift */; };
 		E87C46762C7CC31A0078FF76 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46752C7CC31A0078FF76 /* LoginVC.swift */; };
 		E87C46782C7CC33D0078FF76 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46772C7CC33D0078FF76 /* RegisterVC.swift */; };
@@ -81,13 +81,13 @@
 		E8045EFD2CA15B1100BEE21C /* ResultsSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsSearchVC.xib; sourceTree = "<group>"; };
 		E8349F942C88ABBF00AD2946 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		E8349F962C88B79C00AD2946 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		E83E74BD2CA486B80094C67A /* YoutubeSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResult.swift; sourceTree = "<group>"; };
 		E85922982C8C1111000A0085 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		E859229A2C8C11CA000A0085 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E859229B2C8C11CA000A0085 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		E859A1412C8EC8180010F6EF /* DetailMovieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieVC.swift; sourceTree = "<group>"; };
 		E859A1422C8EC8180010F6EF /* DetailMovieVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMovieVC.xib; sourceTree = "<group>"; };
 		E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderView.swift; sourceTree = "<group>"; };
 		E87C46732C7CC2450078FF76 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E87C46752C7CC31A0078FF76 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E87C46772C7CC33D0078FF76 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -264,6 +264,7 @@
 			children = (
 				E8885E312C7C72480043EA79 /* User.swift */,
 				E8885E332C7C731B0043EA79 /* Movie.swift */,
+				E83E74BD2CA486B80094C67A /* YoutubeSearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,7 +307,6 @@
 		E8BBF7982C8377C200CB4923 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				E8715CBE2C8F3FCA00567553 /* HeroHeaderView.swift */,
 				E863626D2C98B5FA002C0A38 /* CustomSegmentedControl.swift */,
 			);
 			path = Custom;
@@ -562,7 +562,6 @@
 				E8885E342C7C731B0043EA79 /* Movie.swift in Sources */,
 				E8BEEBD62C91692900229587 /* APIService.swift in Sources */,
 				E8349F952C88ABBF00AD2946 /* LoginVM.swift in Sources */,
-				E8715CBF2C8F3FCA00567553 /* HeroHeaderView.swift in Sources */,
 				E87C46782C7CC33D0078FF76 /* RegisterVC.swift in Sources */,
 				E8A090062C8D801F0074EB81 /* DiscoverVC.swift in Sources */,
 				E8885E322C7C72480043EA79 /* User.swift in Sources */,
@@ -578,6 +577,7 @@
 				E8885DFB2C7C6BA20043EA79 /* AppDelegate.swift in Sources */,
 				E8028CB72C97232C00F38433 /* HomeCollectionViewCell.swift in Sources */,
 				E8885DFD2C7C6BA20043EA79 /* SceneDelegate.swift in Sources */,
+				E83E74BE2CA486B80094C67A /* YoutubeSearchResult.swift in Sources */,
 				E8A090012C8D6F950074EB81 /* UserVC.swift in Sources */,
 				E8349F972C88B79C00AD2946 /* RegisterVM.swift in Sources */,
 				E8A0900A2C8D81070074EB81 /* ReuseCollectionViewCell.swift in Sources */,
