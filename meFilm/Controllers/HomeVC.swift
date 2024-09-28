@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var imgMovie: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var trendingAll  = [Movie]()
+    var trendingMovies  = [Movie]()
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +48,10 @@ class HomeVC: UIViewController {
     }
     
     func fetchTrendingAll(){
-        APICaller.shared.getTrendingAll { [weak self] result in
+        APICaller.shared.getTrendingMovies { [weak self] result in
                    switch result {
                    case .success(let movies):
-                       self?.trendingAll = movies
+                       self?.trendingMovies = movies
                        DispatchQueue.main.async {
                            self?.collectionView.reloadData()
                        }
@@ -64,7 +64,7 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trendingAll.count
+        return trendingMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -72,11 +72,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 16
         
-        let data = trendingAll[indexPath.row]
-        
-        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(trendingAll[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-        cell.nameMovie.text = data.original_title ?? data.original_name
-        cell.rateAverageMovie.text = "\(data.vote_average)"
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(trendingMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+        cell.nameMovie.text = trendingMovies[indexPath.row].original_title
+        cell.rateAverageMovie.text = "\(trendingMovies[indexPath.row].vote_average)"
       
         return cell
     }
@@ -87,8 +85,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailMovieVC(nibName: "DetailMovieVC", bundle: nil)
-        let passData = trendingAll[indexPath.row]
-        vc.movieId = passData.id
+        vc.movieId =  trendingMovies[indexPath.row].id
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }

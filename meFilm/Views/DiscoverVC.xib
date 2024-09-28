@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-6y-G1k">
-                    <rect key="frame" x="0.0" y="109" width="393" height="709"/>
+                    <rect key="frame" x="0.0" y="119" width="393" height="699"/>
                     <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lnA-VJ-hFJ">
                         <size key="itemSize" width="128" height="128"/>
@@ -42,13 +42,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.082352941176470587" green="0.078431372549019607" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8jI-FB-isM"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BoB-TR-hwV"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="1Zh-op-UNd"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fm7-yH-ffB"/>
                 <constraint firstItem="Sty-Qp-HVw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Pgr-uY-qhp"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="top" secondItem="Sty-Qp-HVw" secondAttribute="bottom" constant="10" id="TnI-c1-yM4"/>
+                <constraint firstItem="ekP-6y-G1k" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ZFw-Ja-KAX"/>
                 <constraint firstItem="Sty-Qp-HVw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="frf-6I-Uis"/>
                 <constraint firstItem="Sty-Qp-HVw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="j4b-sN-3Uc"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xuN-2I-vB5"/>
-                <constraint firstItem="ekP-6y-G1k" firstAttribute="top" secondItem="Sty-Qp-HVw" secondAttribute="bottom" id="y3p-gH-xYj"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>

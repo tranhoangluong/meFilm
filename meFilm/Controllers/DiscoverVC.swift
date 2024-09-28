@@ -8,7 +8,7 @@
 import UIKit
 
 enum MovieType{
-    case movies, tvSeries, topRated, upComing
+    case popularMovies, nowplayingMovies, topratedMovies, upcomingMovies
 }
 
 class DiscoverVC: UIViewController, UISearchBarDelegate{
@@ -18,18 +18,15 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: ResultsSearchVC())
         controller.searchBar.searchBarStyle = .minimal
-        controller.searchBar.searchTextField.placeholder(text: "Search for a Movie or a TV Show")
+        controller.searchBar.searchTextField.placeholder(text: "Search for a Movie")
         return controller
        }()
         
-    var popularMovies  = [Movie]()
-    var popularTvSeries = [Movie]()
-    var topRated = [Movie]()
-    var upComing = [Movie]()
+    var movies = [Movie]()
     
     var resultSearch = [Movie]()
 
-    var currentMovieType: MovieType = .movies
+    var currentMovieType: MovieType = .popularMovies
     
     var delegate: CustomSegmentedControlDelegate?
     
@@ -41,7 +38,7 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
     }
    
     func setupNavigationController(){
-        navigationItem.title = "Find Movies, Tv Series, and more.."
+        navigationItem.title = "Discover the best movies, here!"
         navigationController?.navigationBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
         tabBarController?.tabBar.barTintColor = UIColor(red: 21.0/225.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
                navigationController?.navigationBar.prefersLargeTitles = true
@@ -57,7 +54,7 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
     }
     
     func setupSegmentedControl(){
-        let segmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentControlView.frame.width, height: segmentControlView.frame.height), buttonTitle: ["Movies", "Tv Series", "Top rated", "Upcoming"])
+        let segmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentControlView.frame.width, height: segmentControlView.frame.height), buttonTitle: ["Popular", "Now Playing", "Top Rated", "Upcoming"])
         segmented.backgroundColor = UIColor(red: 21.0/255.0, green: 20.0/255.0, blue: 31.0/255.0, alpha: 1.0)
         segmented.delegate = self
         segmentControlView.addSubview(segmented)
@@ -74,11 +71,11 @@ class DiscoverVC: UIViewController, UISearchBarDelegate{
 extension DiscoverVC: CustomSegmentedControlDelegate{
     func change(to index: Int) {
         switch index {
-        case 0: currentMovieType = .movies
+        case 0: currentMovieType = .popularMovies
             APICaller.shared.getPopularMovies{ [weak self] result in
                                  switch result {
                                  case .success(let movies):
-                                     self?.popularMovies = movies
+                                     self?.movies = movies
                                      DispatchQueue.main.async {
                                          self?.collectionView.reloadData()
                                      }
@@ -86,11 +83,11 @@ extension DiscoverVC: CustomSegmentedControlDelegate{
                                      print(error.localizedDescription)
                                  }
                              }
-        case 1: currentMovieType = .tvSeries
-            APICaller.shared.getPopularTVSeries{ [weak self] result in
+        case 1: currentMovieType = .nowplayingMovies
+            APICaller.shared.getNowPlayingMovies{ [weak self] result in
                                  switch result {
                                  case .success(let movies):
-                                     self?.popularTvSeries = movies
+                                     self?.movies = movies
                                      DispatchQueue.main.async {
                                          self?.collectionView.reloadData()
                                      }
@@ -98,11 +95,11 @@ extension DiscoverVC: CustomSegmentedControlDelegate{
                                      print(error.localizedDescription)
                                  }
                              }
-        case 2: currentMovieType = .topRated
+        case 2: currentMovieType = .topratedMovies
             APICaller.shared.getTopRatedMovies{ [weak self] result in
                                  switch result {
                                  case .success(let movies):
-                                     self?.topRated = movies
+                                     self?.movies = movies
                                      DispatchQueue.main.async {
                                          self?.collectionView.reloadData()
                                      }
@@ -110,11 +107,11 @@ extension DiscoverVC: CustomSegmentedControlDelegate{
                                      print(error.localizedDescription)
                                  }
                              }
-        case 3: currentMovieType = .upComing
+        case 3: currentMovieType = .upcomingMovies
             APICaller.shared.getUpComingMovies{ [weak self] result in
                                  switch result {
                                  case .success(let movies):
-                                     self?.upComing = movies
+                                     self?.movies = movies
                                      DispatchQueue.main.async {
                                          self?.collectionView.reloadData()
                                      }
@@ -130,34 +127,29 @@ extension DiscoverVC: CustomSegmentedControlDelegate{
 
 extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch currentMovieType {
-        case .movies:
-                return popularMovies.count
-        case .tvSeries:
-                return popularTvSeries.count
-        case .topRated:
-            return topRated.count
-        case .upComing:
-            return upComing.count
-        }
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
-        switch currentMovieType {
-        case .movies :
-            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(popularMovies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-            cell.lblMovie.text = popularMovies[indexPath.row].original_title
-        case .tvSeries:
-            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(popularTvSeries[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-            cell.lblMovie.text = popularTvSeries[indexPath.row].original_name
-        case .topRated:
-            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(topRated[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-            cell.lblMovie.text = topRated[indexPath.row].original_title ?? topRated[indexPath.row].original_name
-        case .upComing:
-            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(upComing[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-            cell.lblMovie.text = upComing[indexPath.row].original_title ?? upComing[indexPath.row].original_name
+        
+        func configCell(){
+            let data = movies[indexPath.row]
+            if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(data.poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
+            cell.lblMovie.text = data.original_title
         }
+        
+        switch currentMovieType{
+        case .popularMovies:
+            configCell()
+        case .nowplayingMovies:
+            configCell()
+        case .topratedMovies:
+            configCell()
+        case .upcomingMovies:
+            configCell()
+        }
+        
         return cell
     }
     
@@ -169,6 +161,7 @@ extension DiscoverVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = DetailMovieVC(nibName: "DetailMovieVC", bundle: nil)
         vc.modalPresentationStyle = .fullScreen
+        vc.movieId = movies[indexPath.row].id
         present(vc, animated: true, completion: nil)
     }
 }

@@ -36,7 +36,7 @@ extension ResultsSearchVC: UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCollectionViewCell", for: indexPath) as! ReuseCollectionViewCell
         if let url = URL(string: "https://image.tmdb.org/t/p/w500/\(movies[indexPath.row].poster_path ?? "")") {cell.imgMovie.sd_setImage(with: url)}
-        cell.lblMovie.text = movies[indexPath.row].original_title ?? movies[indexPath.row].original_name
+        cell.lblMovie.text = movies[indexPath.row].original_title
         return cell
     }
     
