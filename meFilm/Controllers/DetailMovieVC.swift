@@ -95,8 +95,15 @@ class DetailMovieVC: UIViewController {
                     self?.movieOverview.text = movie.overview
                     self?.movieReleaseDate.text = movie.release_date
                     self?.movieDuration.text = "\(movie.runtime) minutes"
-                    self?.movieGenre1.text = movie.genres[0].name
-                    self?.movieGenre2.text = movie.genres[1].name
+                    
+                    if (movie.genres.count >= 2){
+                        self?.movieGenre1.text = movie.genres[0].name
+                        self?.movieGenre2.text = movie.genres[1].name
+                    } else {
+                        self?.movieGenre1.text = movie.genres[0].name
+                        self?.movieGenre2.text = movie.genres[0].name
+                    }
+                  
                     APICaller.shared.getTrailer(with: movie.original_title!) { [weak self] result in
                         switch result {
                         case .success(let video):
