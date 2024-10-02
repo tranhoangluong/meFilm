@@ -13,6 +13,15 @@
             continueAfterRunningActions = "No"
             symbolName = "*0x1024833cf">
             <Locations>
+               <Location
+                  uuid = "95FF4238-0B15-4E69-9989-BB4F13C92B4D - 88af399ed5f9406c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "*0x1024833cf"
+                  moduleName = "meFilm"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

@@ -273,9 +273,9 @@
 			isa = PBXGroup;
 			children = (
 				E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */,
-				E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */,
 				E8028CB52C97232C00F38433 /* HomeCollectionViewCell.swift */,
 				E8028CB62C97232C00F38433 /* HomeCollectionViewCell.xib */,
+				E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */,
 				E8045EFC2CA15B1100BEE21C /* ResultsSearchVC.swift */,
 				E8045EFD2CA15B1100BEE21C /* ResultsSearchVC.xib */,
 			);

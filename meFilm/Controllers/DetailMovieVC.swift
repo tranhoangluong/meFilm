@@ -112,6 +112,7 @@ class DetailMovieVC: UIViewController {
                                     return
                                 }
                                 self?.wkWebview.load(URLRequest(url: url))
+                                UserDefaults.standard.set(url.absoluteString, forKey: "url")
                             }
                         case .failure(let error):
                             print(error.localizedDescription)

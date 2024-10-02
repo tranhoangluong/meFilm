@@ -16,7 +16,7 @@ protocol RegisterResultDelegate{
 
 protocol RegisterViewModelDelegate{
     func register(user: User) -> Void
-    func addUserToDatabase(username: String) -> Void
+    func addUserToDatabase(username: String, email: String, password: String) -> Void
     func checkUsernameIsUnique(_ username: String, completion: @escaping (Bool) -> Void) -> Void
 }
 
@@ -38,7 +38,7 @@ extension RegisterVM: RegisterViewModelDelegate{
                         return
                     }
                     if result != nil{
-                        self.addUserToDatabase(username: username)
+                        self.addUserToDatabase(username: username, email: email, password: password)
                         self.delegate?.registerSuccess(title: "Register successfully")
                     }
                 }
@@ -47,10 +47,10 @@ extension RegisterVM: RegisterViewModelDelegate{
     
     }
     
-    func addUserToDatabase(username: String) {
+    func addUserToDatabase(username: String, email: String, password: String ) {
         guard let userId = Auth.auth().currentUser?.uid else {return}
         let databaseRef = Database.database().reference()
-        let data = ["username": username]
+        let data = ["username": username, "password": password, "email": email]
         let userRef = databaseRef.child("Users/\(userId)")
         userRef.setValue(data)
     }

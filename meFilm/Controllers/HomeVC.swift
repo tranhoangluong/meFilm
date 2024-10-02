@@ -7,10 +7,10 @@
 
 import UIKit
 import SDWebImage
+import WebKit
 
 class HomeVC: UIViewController {
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var imgMovie: UIImageView!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var trendingMovies  = [Movie]()
@@ -34,10 +34,11 @@ class HomeVC: UIViewController {
     }
     
     func configView(){
-        imgMovie.layer.masksToBounds = true
-        imgMovie.layer.cornerRadius = 16
-        playButton.layer.masksToBounds = true
-        playButton.layer.cornerRadius = 16
+        if let url = UserDefaults.standard.string(forKey: "url"),
+               let trailerUrl = URL(string: url) {
+                let request = URLRequest(url: trailerUrl)
+                webView.load(request)
+            }
     }
     
     func setupCollectionView(){
