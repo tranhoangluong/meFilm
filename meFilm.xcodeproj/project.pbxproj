@@ -26,7 +26,6 @@
 		E87C46742C7CC2450078FF76 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46732C7CC2450078FF76 /* AuthService.swift */; };
 		E87C46762C7CC31A0078FF76 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46752C7CC31A0078FF76 /* LoginVC.swift */; };
 		E87C46782C7CC33D0078FF76 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87C46772C7CC33D0078FF76 /* RegisterVC.swift */; };
-		E87C467C2C7CC6150078FF76 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E87C467B2C7CC6150078FF76 /* GoogleService-Info.plist */; };
 		E8885DFB2C7C6BA20043EA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8885DFA2C7C6BA20043EA79 /* AppDelegate.swift */; };
 		E8885DFD2C7C6BA20043EA79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8885DFC2C7C6BA20043EA79 /* SceneDelegate.swift */; };
 		E8885DFF2C7C6BA20043EA79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8885DFE2C7C6BA20043EA79 /* ViewController.swift */; };
@@ -45,6 +44,7 @@
 		E8A090092C8D81070074EB81 /* ReuseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */; };
 		E8A0900A2C8D81070074EB81 /* ReuseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */; };
 		E8BEEBD62C91692900229587 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BEEBD52C91692900229587 /* APIService.swift */; };
+		E8D42CFE2CAE63AF004C0ACC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D42CFD2CAE63AF004C0ACC /* GoogleService-Info.plist */; };
 		E8FE47E42C837B000046D275 /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE47E32C837B000046D275 /* ExtensionTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +91,6 @@
 		E87C46732C7CC2450078FF76 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E87C46752C7CC31A0078FF76 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		E87C46772C7CC33D0078FF76 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		E87C467B2C7CC6150078FF76 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8885DF72C7C6BA20043EA79 /* meFilm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meFilm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8885DFA2C7C6BA20043EA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8885DFC2C7C6BA20043EA79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		E8A090072C8D81070074EB81 /* ReuseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseCollectionViewCell.swift; sourceTree = "<group>"; };
 		E8A090082C8D81070074EB81 /* ReuseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReuseCollectionViewCell.xib; sourceTree = "<group>"; };
 		E8BEEBD52C91692900229587 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		E8D42CFD2CAE63AF004C0ACC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8FE47E32C837B000046D275 /* ExtensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,7 +219,7 @@
 				E8885DFE2C7C6BA20043EA79 /* ViewController.swift */,
 				E8885E032C7C6BA50043EA79 /* Assets.xcassets */,
 				E8885E082C7C6BA50043EA79 /* Info.plist */,
-				E87C467B2C7CC6150078FF76 /* GoogleService-Info.plist */,
+				E8D42CFD2CAE63AF004C0ACC /* GoogleService-Info.plist */,
 			);
 			path = meFilm;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 				E8028CB82C97232C00F38433 /* HomeCollectionViewCell.xib in Resources */,
 				E8A090092C8D81070074EB81 /* ReuseCollectionViewCell.xib in Resources */,
 				E8045EFF2CA15B1100BEE21C /* ResultsSearchVC.xib in Resources */,
-				E87C467C2C7CC6150078FF76 /* GoogleService-Info.plist in Resources */,
+				E8D42CFE2CAE63AF004C0ACC /* GoogleService-Info.plist in Resources */,
 				E859A1442C8EC8180010F6EF /* DetailMovieVC.xib in Resources */,
 				E8A090052C8D801F0074EB81 /* DiscoverVC.xib in Resources */,
 			);
